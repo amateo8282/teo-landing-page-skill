@@ -1,16 +1,17 @@
 ---
-name: design-taste-frontend
-description: Senior UI/UX Engineer. Architect digital interfaces overriding default LLM biases. Enforces metric-based rules, strict component architecture, CSS hardware acceleration, and balanced design engineering.
+name: teo-landing-page-skill
+description: Senior UI/UX Engineer for Korean SaaS landing pages. Generates premium React/Next.js interfaces with Korean-first typography (Pretendard), conversion-optimized layouts, and hardware-accelerated motion. Merges taste-skill's React architecture with Supanova's Korean design standards.
 ---
 
-# High-Agency Frontend Skill
+# Teo Landing Page Skill
 
 ## 1. ACTIVE BASELINE CONFIGURATION
 * DESIGN_VARIANCE: 8 (1=Perfect Symmetry, 10=Artsy Chaos)
 * MOTION_INTENSITY: 6 (1=Static/No movement, 10=Cinematic/Magic Physics)
-* VISUAL_DENSITY: 4 (1=Art Gallery/Airy, 10=Pilot Cockpit/Packed Data)
+* VISUAL_DENSITY: 3 (1=Art Gallery/Airy, 10=Pilot Cockpit/Packed Data)
+* LANDING_PURPOSE: saas (conversion | brand | portfolio | saas | ecommerce)
 
-**AI Instruction:** The standard baseline for all generations is strictly set to these values (8, 6, 4). Do not ask the user to edit this file. Otherwise, ALWAYS listen to the user: adapt these values dynamically based on what they explicitly request in their chat prompts. Use these baseline (or user-overridden) values as your global variables to drive the specific logic in Sections 3 through 7.
+**AI Instruction:** The standard baseline for all generations is strictly set to these values (8, 6, 3, saas). Do not ask the user to edit this file. Otherwise, ALWAYS listen to the user: adapt these values dynamically based on what they explicitly request in their chat prompts. Use these baseline (or user-overridden) values as your global variables to drive the specific logic in Sections 3 through 10.
 
 ## 2. DEFAULT ARCHITECTURE & CONVENTIONS
 Unless the user explicitly specifies a different stack, adhere to these structural constraints to maintain consistency:
@@ -35,11 +36,17 @@ Unless the user explicitly specifies a different stack, adhere to these structur
 ## 3. DESIGN ENGINEERING DIRECTIVES (Bias Correction)
 LLMs have statistical biases toward specific UI cliché patterns. Proactively construct premium interfaces using these engineered rules:
 
-**Rule 1: Deterministic Typography**
-* **Display/Headlines:** Default to `text-4xl md:text-6xl tracking-tighter leading-none`.
-    * **ANTI-SLOP:** Discourage `Inter` for "Premium" or "Creative" vibes. Force unique character using `Geist`, `Outfit`, `Cabinet Grotesk`, or `Satoshi`.
-    * **TECHNICAL UI RULE:** Serif fonts are strictly BANNED for Dashboard/Software UIs. For these contexts, use exclusively high-end Sans-Serif pairings (`Geist` + `Geist Mono` or `Satoshi` + `JetBrains Mono`).
-* **Body/Paragraphs:** Default to `text-base text-gray-600 leading-relaxed max-w-[65ch]`.
+**Rule 1: Deterministic Typography — Korean First**
+* **Primary Font:** `Pretendard Variable` is NON-NEGOTIABLE for all Korean text. Load via CDN or npm package.
+  * **Font Stack:** `font-family: 'Pretendard Variable', 'Geist', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;`
+  * **English Display Font:** Pair with `Geist`, `Outfit`, `Cabinet Grotesk`, or `Satoshi` for English headlines.
+* **Korean Headlines:** `text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight font-bold`.
+  * **CRITICAL:** Korean text requires `leading-tight` to `leading-snug` (NOT `leading-none`). Korean characters need more vertical breathing room than Latin text.
+  * **Word Breaking:** Always add `break-keep-all` (Tailwind) to Korean text blocks to prevent mid-word line breaks.
+* **English Display Text:** Use `tracking-tighter leading-none` for maximum impact with Latin fonts.
+* **Body/Paragraphs:** `text-base md:text-lg text-gray-600 leading-relaxed max-w-[65ch]`.
+* **ANTI-SLOP FONTS:** `Inter` is BANNED. `Noto Sans KR` is BANNED (use Pretendard). `Roboto`, `Arial`, `Open Sans` are all BANNED.
+* **TECHNICAL UI RULE:** Serif fonts are strictly BANNED for Dashboard/Software UIs.
 
 **Rule 2: Color Calibration**
 * **Constraint:** Max 1 Accent Color. Saturation < 80%.
@@ -113,12 +120,15 @@ To guarantee a premium, non-generic output, you MUST strictly avoid these common
 * **Align & Space Perfectly:** Ensure padding and margins are mathematically perfect. Avoid floating elements with awkward gaps.
 * **NO 3-Column Card Layouts:** The generic "3 equal cards horizontally" feature row is BANNED. Use a 2-column Zig-Zag, asymmetric grid, or horizontal scrolling approach instead.
 
-### Content & Data (The "Jane Doe" Effect)
-* **NO Generic Names:** "John Doe", "Sarah Chan", or "Jack Su" are banned. Use highly creative, realistic-sounding names.
-* **NO Generic Avatars:** DO NOT use standard SVG "egg" or Lucide user icons for avatars. Use creative, believable photo placeholders or specific styling.
-* **NO Fake Numbers:** Avoid predictable outputs like `99.99%`, `50%`, or basic phone numbers (`1234567`). Use organic, messy data (`47.2%`, `+1 (312) 847-1928`).
-* **NO Startup Slop Names:** "Acme", "Nexus", "SmartFlow". Invent premium, contextual brand names.
-* **NO Filler Words:** Avoid AI copywriting clichés like "Elevate", "Seamless", "Unleash", or "Next-Gen". Use concrete verbs.
+### Content & Data (Korean-First)
+* **NO Generic Korean Names:** "김철수", "이영희" are banned. Use creative, realistic names: "하윤서", "박도현", "이서진".
+* **NO Generic English Names:** "John Doe", "Sarah Chan" are banned.
+* **NO Generic Avatars:** DO NOT use standard SVG "egg" or Lucide user icons for avatars. Use `https://i.pravatar.cc/150?u={unique_name}` or specific styling.
+* **NO Fake Numbers:** Use organic data (`47,200+` not `50,000+`). Use `4.87` not `5.0`.
+* **NO Startup Slop Names:** "Acme", "넥서스", "SmartFlow". Invent premium Korean brand names: "스텔라랩스", "베리파이".
+* **NO Korean AI Cliche Copy:** "혁신적인", "획기적인", "차세대", "원활한" are BANNED. Write specific, concrete Korean.
+* **NO English Filler Words:** "Elevate", "Seamless", "Unleash", "Next-Gen" are BANNED.
+* **NO Lorem Ipsum:** All placeholder content must be natural Korean.
 
 ### External Resources & Components
 * **NO Broken Unsplash Links:** Do not use Unsplash. Use absolute, reliable placeholders like `https://picsum.photos/seed/{random_string}/800/600` or SVG UI Avatars.
@@ -215,12 +225,72 @@ Implement these specific micro-animations when constructing Bento grids (e.g., R
 4. **The Wide Data Stream:** A horizontal "Infinite Carousel" of data cards or metrics. Ensure the loop is seamless (using `x: ["0%", "-100%"]`) with a speed that feels effortless.
 5. **The Contextual UI (Focus Mode):** A document view that animates a staggered highlight of a text block, followed by a "Float-in" of a floating action toolbar with micro-icons.
 
-## 10. FINAL PRE-FLIGHT CHECK
+## 10. KOREAN CONTENT STANDARDS
+All visible content MUST be written in natural, professional Korean unless the user explicitly requests otherwise.
+
+**Rule 1: Native Korean Copy**
+* **NO Translated Korean:** Write native, natural Korean. "지금 시작하세요" not "시작을 하세요 지금".
+* **Honorifics:** Use 합니다/하세요 form consistently. Never mix 반말 and 존댓말.
+* **CTA Copy:** Direct, action-oriented: "무료로 시작하기", "3분만에 만들어보기", "지금 바로 체험하기"
+* **BANNED AI Cliches:** "혁신적인", "획기적인", "차세대", "원활한", "게임 체인저" are BANNED. Write specific, concrete language.
+* **NO Lorem Ipsum or English Placeholder.** All content in natural Korean.
+
+**Rule 2: Korean Data & Names**
+* **NO "김철수" / "John Doe".** Use creative, realistic Korean names: "하윤서", "박도현", "이서진".
+* **NO "넥서스" / "Acme Corp".** Invent premium Korean brand names: "스텔라랩스", "베리파이", "루미너스".
+* **NO Round Numbers.** Use `47,200+` not `50,000+`. Use `4.87` not `5.0`.
+
+**Rule 3: Conversion-Driven UI States (if LANDING_PURPOSE = conversion | saas)**
+* **CTA Buttons:** Must have hover (`scale-[1.02]`), active (`scale-[0.98]`), and focus states. Minimum size `px-8 py-4 text-lg`.
+* **Social Proof:** Numbers must feel organic. Use real-sounding Korean names and companies.
+* **Trust Signals:** Include at least one of: client logos, testimonial quotes, metrics bar, press mentions.
+
+## 11. LANDING PAGE SECTION LIBRARY
+Do not default to generic layouts. Pull from this library of premium landing page patterns:
+
+### Hero Sections
+* **Split Hero:** 60/40 text-to-visual split. Text left, product screenshot right. Background gradient bleed.
+* **Full-Bleed Media Hero:** Full-screen image/video with overlaid text. Dark gradient overlay from bottom.
+* **Minimal Statement Hero:** Massive typography (text-7xl+) with extreme white-space. Single-line value proposition.
+* **Interactive Hero:** Typewriter effect cycling through use cases. "AI로 __ 만들기" with rotating words.
+
+### Feature Sections
+* **Bento Grid:** Asymmetric grid (2fr 1fr 1fr pattern) with different card heights.
+* **Zig-Zag Alternating:** Image-left/text-right → text-left/image-right pattern. Never 3-column equal cards.
+* **Comparison Table:** "Before vs After" or "Us vs Them" with dramatic visual difference.
+
+### Social Proof Sections
+* **Logo Cloud:** Client/press logos in a subtle, auto-scrolling marquee strip. Grayscale → color on hover.
+* **Testimonial Masonry:** Staggered card heights. Real Korean names, real company names. Photo avatars.
+* **Metrics Bar:** Large numbers with animated counting effect. "47,200+ 페이지 생성", "4.9/5.0 만족도".
+
+### CTA Sections
+* **Full-Bleed CTA:** Dark background, massive text, glowing accent CTA button, floating trust badges below.
+* **Sticky Bottom CTA:** Fixed bottom bar that appears after scrolling past the hero.
+
+### Footer
+* **Minimal Footer:** Logo, essential links, copyright. No 4-column link farms.
+
+### Mandatory Section Order (Minimum)
+1. **Navigation** — Floating glass pill nav OR minimal top bar
+2. **Hero** — The single most impactful section. Must be above the fold.
+3. **Social Proof Strip** — Logo cloud or metrics bar. Builds trust immediately.
+4. **Features** — 3-5 key features in Bento grid or zig-zag layout.
+5. **Testimonials** — Real-feeling Korean testimonials with names and roles.
+6. **CTA** — Full-bleed conversion section with primary action.
+7. **Footer** — Minimal, clean, essential links only.
+
+## 12. FINAL PRE-FLIGHT CHECK
 Evaluate your code against this matrix before outputting. This is the **last** filter you apply to your logic.
-- [ ] Is global state used appropriately to avoid deep prop-drilling rather than arbitrarily?
-- [ ] Is mobile layout collapse (`w-full`, `px-4`, `max-w-7xl mx-auto`) guaranteed for high-variance designs?
-- [ ] Do full-height sections safely use `min-h-[100dvh]` instead of the bugged `h-screen`?
+- [ ] Is Pretendard loaded and set as the primary font?
+- [ ] Is all visible text content written in natural Korean (not translated)?
+- [ ] Does Korean text use `leading-tight`/`leading-snug` (NOT `leading-none`)?
+- [ ] Does `break-keep-all` exist on Korean text blocks?
+- [ ] Does each section use a DIFFERENT layout pattern from its neighbors?
+- [ ] Is mobile layout collapse (`w-full`, `px-4`, `max-w-7xl mx-auto`) guaranteed?
+- [ ] Do full-height sections safely use `min-h-[100dvh]` instead of `h-screen`?
 - [ ] Do `useEffect` animations contain strict cleanup functions?
-- [ ] Are empty, loading, and error states provided?
-- [ ] Are cards omitted in favor of spacing where possible?
+- [ ] Are CTA buttons large enough for mobile tap targets (min 48px height)?
 - [ ] Did you strictly isolate CPU-heavy perpetual animations in their own Client Components?
+- [ ] Are there zero banned fonts, zero emoji, zero Unsplash links?
+- [ ] Does the page feel premium, not template-like?
